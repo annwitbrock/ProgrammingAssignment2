@@ -2,12 +2,12 @@
 ## allow an invertible matrix and its inverse to be cached.
 ## The inversion function used is solve() 
 
-## makeCacheMatrix - returns a cacheable invertible matrix.
+## makeCacheMatrix - returns a special cacheable invertible "matrix".
 ##        x: is an invertible matrix
 ##        set() stores the matrix
 ##        get() retrieves the matrix
-##        setinverse caches the result of of the inversion function
-##        getinverse retrieves any cached result
+##        setinverse() caches the result of of the inversion function
+##        getinverse() retrieves any cached result
 
 makeCacheMatrix <- function(x = matrix()) {
         inv <- NULL
@@ -23,6 +23,7 @@ makeCacheMatrix <- function(x = matrix()) {
         setinverse <- function(s) inv <<- s
         getinverse <- function() inv
         
+        # expose functions
         list(set = set,
              get = get,
              setinverse = setinverse,
@@ -31,7 +32,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## cacheSolve - returns the cached inverse of a matrix.
-##        x:  is a cacheable invertible matrix defined by calling
+##        x:  is a special cacheable "matrix" defined by calling
 ##            makeCacheMatrix(M), where M is an invertible matrix
 ##
          
